@@ -265,33 +265,45 @@ window.onload = function() {
   }, {threshold:0.2});
   document.querySelectorAll(".card").forEach(c => observer.observe(c));
 
-  /* ---------- MUSIC CONTROL ---------- */
-  const tracks = document.querySelectorAll(".track");
-  const audios = document.querySelectorAll("audio");
-  let musicStarted = false;
+/* ---------- MUSIC CONTROL ---------- */
+const tracks = document.querySelectorAll(".track");
+const audios = document.querySelectorAll("audio");
+let musicStarted = false;
 
-  function playSong(index) {
-    audios.forEach((audio, i) => {
-      audio.pause();
-      audio.currentTime = 0;
-      tracks[i].classList.remove("active");
-    });
-    audios[index].play().catch(() => {}); // catch autoplay errors
-    tracks[index].classList.add("active");
+// Play a song by index
+function playSong(index) {
+  audios.forEach((audio, i) => {
+    audio.pause();
+    audio.currentTime = 0;
+    tracks[i].classList.remove("active");
+  });
+  audios[index].play().catch(() => {}); // ignore autoplay errors
+  tracks[index].classList.add("active");
+}
+
+// Start third song on first interaction
+function startMusicOnInteraction() {
+  if (!musicStarted) {
+    playSong(2); // third song
+    musicStarted = true;
+    // remove listeners so it doesn't trigger again
+    window.removeEventListener("click", startMusicOnInteraction);
+    window.removeEventListener("touchstart", startMusicOnInteraction);
   }
+}
 
-  // Start third song after first user interaction
-  function startMusicOnInteraction() {
-    if (!musicStarted) {
-      playSong(2); // third song
-      musicStarted = true;
-      window.removeEventListener("click", startMusicOnInteraction);
-      window.removeEventListener("touchstart", startMusicOnInteraction);
-    }
-  }
+// Add event listeners for the track buttons
+tracks.forEach((track, index) => {
+  track.addEventListener("click", () => {
+    playSong(index); // play the clicked song
+    musicStarted = true; // ensures autoplay doesn't trigger again
+  });
+});
 
-  window.addEventListener("click", startMusicOnInteraction);
-  window.addEventListener("touchstart", startMusicOnInteraction);
+// Global first interaction triggers third song
+window.addEventListener("click", startMusicOnInteraction);
+window.addEventListener("touchstart", startMusicOnInteraction);
+
 
 };
 </script>
@@ -299,3 +311,4 @@ window.onload = function() {
 
 </body>
 </html>
+
