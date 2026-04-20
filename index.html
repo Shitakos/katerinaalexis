@@ -14,7 +14,7 @@
   <!-- PARTICLES -->
   <canvas id="particles-canvas"></canvas>
 
-  <!-- ========== LOGIN ========== -->
+  <!-- LOGIN -->
   <div id="login">
     <div class="login-box">
       <span class="login-heart">💕</span>
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <!-- ========== MAIN ========== -->
+  <!-- MAIN -->
   <div id="content" class="hidden">
 
     <!-- MUSIC PLAYER -->
@@ -93,7 +93,7 @@
     <footer>
       <span class="footer-heart">💕</span>
       <p>"One year of you — and I'd choose you again in every lifetime."</p>
-      <small>Made with love ✦ Always & Forever</small>
+      <small>Made with love ✦ Always &amp; Forever</small>
     </footer>
 
   </div>
@@ -110,6 +110,42 @@
   <audio src="music/youtheone.mp3"></audio>
   <audio src="music/areti.mp3"></audio>
   <audio src="music/loveme.mp3"></audio>
+
+  <!-- FAB BUTTONS (shown after login) -->
+  <div class="fab-group hidden" id="fab-group">
+    <button class="fab fab-manage" id="fab-manage" title="Manage photos">✎</button>
+    <button class="fab fab-upload" id="fab-upload" title="Upload photos">+</button>
+  </div>
+
+  <!-- UPLOAD MODAL -->
+  <div id="upload-modal">
+    <div class="upload-box">
+      <button class="lb-close" id="upload-close">✕</button>
+      <h3>Add Memories 💕</h3>
+      <div class="upload-drop-zone" id="upload-drop">
+        <div class="upload-drop-icon">📷</div>
+        <p>Tap to pick photos</p>
+        <p class="upload-hint">or drag &amp; drop here</p>
+        <input type="file" id="upload-input" accept="image/*" multiple />
+      </div>
+      <div class="upload-preview" id="upload-preview"></div>
+      <button class="login-btn" id="upload-submit">Upload to Our Gallery ✦</button>
+      <p class="upload-status" id="upload-status"></p>
+    </div>
+  </div>
+
+  <!-- DELETE CONFIRM MODAL -->
+  <div id="delete-modal">
+    <div class="delete-box">
+      <h4>Delete this photo? 🗑️</h4>
+      <p>This will remove it from the GitHub repo.</p>
+      <span id="delete-filename"></span>
+      <div class="delete-actions">
+        <button id="delete-yes">Yes, delete</button>
+        <button id="delete-no">Cancel</button>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
