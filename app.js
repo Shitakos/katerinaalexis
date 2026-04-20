@@ -7,7 +7,7 @@
       Permissions → Contents: Read and Write
    3. Paste the token below (keep the quotes)
    ============================================================ */
-const GITHUB_TOKEN = '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';
+const GITHUB_TOKEN = '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';
 const GITHUB_OWNER = 'Shitakos';
 const GITHUB_REPO = 'katerinaalexis';
 const GITHUB_BRANCH = 'main';
